@@ -17,4 +17,15 @@ Collected data from kaggle to get a dataset that has 3085 TWITTER annotations. W
 
 ## Data Preprocessing
 Clean the data up to make it ready for modeling process. I made the following changes:
-* 
+* Dropped categories that have two different sentiments or more at the same time
+* Dropped non-sense categories (The one named nocode)
+* Created a variable named label that has the sentiments encoded
+
+## Model Building
+First, I splitted up data in training and test sets with test size of 15 %. I also tokenized and encoded each text using a pre-trained BERT Tokenizer to it make ready to be fed to a model.<br>I expedited the data processing by transforming our dataset into a dataloader, trained a pre-trained BERT model by setting up `AdamW` as an optimizer, `linear_schedule_with_warmup` as a scheduler and `f1-score` & `accuracy` as performance metrics.
+
+## Model Performance
+Our deep learning model has performed very well on test set as we get the following as final results:
+* <b>Training loss :</b> 0.65
+* <b>Testing loss :</b> 0.65
+* <b>Testing f1 score :</b> 87.16 %
